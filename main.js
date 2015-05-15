@@ -41,18 +41,19 @@ itemTitles.forEach(function(itemTitles){
 
 //Question 3
 
+//create blank arrays
 var gbpName = [];
 var gbpPrice = [];
 
+//find the item name and price that matches "GBP"
 items.filter(function(item) {
   if (item.currency_code === "GBP") {
     gbpName.push(item.title);
     gbpPrice.push(item.price);
 }
 });
-console.log(gbpName);
-console.log(gbpPrice);
 
+//Drop answer3 into DOM node
 var answer3 = document.querySelector('#answer3');
 answer3.innerText = '';
 gbpName.forEach(function(gbpName) {
@@ -60,9 +61,61 @@ gbpName.forEach(function(gbpName) {
 })
 
 
+//Question 4
+
+//create blank array
+var woodList = [];
+
+//find items made of wood
+items.filter(function(item) {
+  item.materials.forEach(function(item2) {
+    if (item2 === "wood") {
+    woodList.push(item.title)
+  }
+});
+});
+
+//Drop answer 4 into DOM node
+var answer4 = document.querySelector('#answer4');
+answer4.innerText = '';
+woodList.forEach(function(woodList) {
+  answer4.appendChild(document.createTextNode(woodList + '\n' + '\n'));
+})
+
+//Question 5
+
+//create blank arrays
+var materials1 = [];
+var materials2 = [];
+
+//find the items with materials lengths greater than or equal to 8.
+//Assign the titles to materials1
+//Assign the materials lists to materials2
+items.filter(function(item) {
+    if (item.materials.length >= 8) {
+      materials1.push(item.title);
+      materials2.push(item.materials);
+      }
+  });
+
+//Drop answer 5 into DOM node
+var answer5 = document.querySelector('#answer5');
+answer5.innerText = '';
+materials1.forEach(function(materials1) {
+answer5.appendChild(document.createTextNode(materials1 + '\n' + materials2 + '\n' + materials2));
+  });
 
 
 
+
+
+
+
+
+
+// for (i=0;i<materials1.length;i++) {
+//   document.createTextNode(materials1[i] + "< br >");
+// }
 
 
 
