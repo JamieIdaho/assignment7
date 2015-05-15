@@ -82,40 +82,35 @@ woodList.forEach(function(woodList) {
   answer4.appendChild(document.createTextNode(woodList + '\n' + '\n'));
 })
 
+
+
 //Question 5
 
-//create blank arrays
-var materials1 = [];
-var materials2 = [];
-
-//find the items with materials lengths greater than or equal to 8.
-//Assign the titles to materials1
-//Assign the materials lists to materials2
-items.filter(function(item) {
-    if (item.materials.length >= 8) {
-      materials1.push(item.title);
-      materials2.push(item.materials);
-      }
-  });
-
-//Drop answer 5 into DOM node
+//Grab answer 5 and clear it
 var answer5 = document.querySelector('#answer5');
 answer5.innerText = '';
-materials1.forEach(function(materials1) {
-answer5.appendChild(document.createTextNode(materials1 + '\n' + materials2 + '\n' + materials2));
-  });
 
+//create a filteredItems object and put filtered items in it
+var filteredItems = items.filter(function(item) {
+  return item.materials.length >= 8;
+})
 
+//run a for each on filteredItems and create variables for titles, materials lenths and materials
+//Put the titles and number of materials in answer 5
+filteredItems.forEach(function(item) {
+  var title = item.title;
+  var materials = item.materials;
+  var length = materials.length;
+  answer5.appendChild(document.createTextNode(item.title + " has " + length + " materials\n\n"));
 
+//run a forEach on materials array and put them in answer 5
+  materials.forEach(function(material) {
+    answer5.appendChild(document.createTextNode(material + '\n'));
+  })
 
-
-
-
-
-
-// for (i=0;i<materials1.length;i++) {
-//   document.createTextNode(materials1[i] + "< br >");
-// }
+  //put spaces in answer 5
+  answer5.appendChild(document.createTextNode('\n'));
+})
 
 
 
