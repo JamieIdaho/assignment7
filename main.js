@@ -114,5 +114,18 @@ filteredItems.forEach(function(item) {
 
 
 
+//Question 6
+
+var sellers = [];
+
+items.forEach(function(item) {
+  if (item.who_made === "i_did") {
+    sellers.push(item.who_made);
+  }
+})
+
+var answer6 = document.querySelector('#answer6');
+answer6.innerText = sellers.length + " were made by their sellers";
+
 
 
